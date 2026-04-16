@@ -2686,10 +2686,6 @@ function openReadme(id) {
   document.body.style.overflow = 'hidden';
   var sb = document.getElementById('session-bar');
   if (sb) sb.style.display = 'none';
-  // #region agent log
-  var hdr = overlay.querySelector('.readme-header'); var overlayRect = overlay.getBoundingClientRect(); var hdrRect = hdr ? hdr.getBoundingClientRect() : null; var parentCS = window.getComputedStyle(overlay.parentElement); var overlayCS = window.getComputedStyle(overlay);
-  fetch('http://127.0.0.1:7332/ingest/9a73e47b-1ce0-4f1d-822d-e983ca0b619b',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'7391dd'},body:JSON.stringify({sessionId:'7391dd',location:'index.html:openReadme',message:'overlay+header positioning post-fix',data:{overlayId:id,overlayRect:{top:overlayRect.top,left:overlayRect.left,width:overlayRect.width,height:overlayRect.height},headerRect:hdrRect?{top:hdrRect.top,left:hdrRect.left,width:hdrRect.width,height:hdrRect.height}:null,headerDisplay:hdr?window.getComputedStyle(hdr).display:null,parentTransform:parentCS.transform,parentPosition:parentCS.position,parentId:overlay.parentElement.id,overlayPosition:overlayCS.position,overlayZIndex:overlayCS.zIndex,overlayDisplay:overlayCS.display,overlayInset:overlayCS.inset},timestamp:Date.now()})}).catch(function(){});
-  // #endregion
 }
 
 function closeReadme() {
