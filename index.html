@@ -467,7 +467,7 @@
       transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .project-card.expanded .project-card-details { max-height: 400px; }
+    .project-card.expanded .project-card-details { max-height: 600px; }
 
     .project-card-details-inner {
       padding: 0 24px 24px;
@@ -602,6 +602,250 @@
 
     .footer-brand span { color: var(--accent); }
 
+    /* ── README Overlay ───────────────────────────────── */
+
+    .readme-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 950;
+      background: var(--bg-deep);
+      display: none;
+      flex-direction: column;
+      animation: overlayIn 0.3s ease;
+    }
+
+    .readme-overlay.active { display: flex; }
+
+    @keyframes overlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .readme-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .readme-header-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .readme-header-icon { font-size: 18px; flex-shrink: 0; }
+
+    .readme-header-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .readme-close {
+      background: none;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: var(--font-sans);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .readme-close:hover {
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+      background: var(--bg-card);
+    }
+
+    .readme-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px 24px 80px;
+    }
+
+    .readme-body {
+      max-width: 880px;
+      margin: 0 auto;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .readme-body h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.3;
+    }
+
+    .readme-body h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 32px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.3;
+    }
+
+    .readme-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 24px 0 8px;
+      line-height: 1.4;
+    }
+
+    .readme-body h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 20px 0 8px;
+    }
+
+    .readme-body p { margin: 0 0 16px; }
+
+    .readme-body strong { color: var(--text-primary); }
+
+    .readme-body em { font-style: italic; }
+
+    .readme-body a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .readme-body a:hover { color: var(--accent-light); text-decoration: underline; }
+
+    .readme-body hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    .readme-body pre {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      overflow-x: auto;
+      margin: 0 0 16px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .readme-body pre code {
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: inherit;
+      white-space: pre;
+    }
+
+    .readme-body code {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--accent-light);
+    }
+
+    .readme-body blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 0 0 16px;
+      padding: 4px 16px;
+      color: var(--text-muted);
+    }
+
+    .readme-body blockquote p { margin-bottom: 4px; }
+
+    .readme-body ul, .readme-body ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+    }
+
+    .readme-body li { margin-bottom: 4px; }
+
+    .readme-body li ul, .readme-body li ol { margin: 4px 0 4px; }
+
+    .readme-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 16px;
+      font-size: 14px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    .readme-body thead { background: var(--bg-card); }
+
+    .readme-body th {
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .readme-body td {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .readme-body tbody tr:nth-child(even) { background: var(--bg-card); }
+
+    .readme-body .check-done { color: var(--accent); }
+    .readme-body .check-pending { color: var(--text-muted); }
+
+    .readme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    .readme-btn:hover {
+      background: var(--accent-dim);
+      color: var(--accent-light);
+    }
+
+    .readme-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
     /* ── Responsive ────────────────────────────────────── */
 
     @media (max-width: 768px) {
@@ -612,6 +856,13 @@
       .nda-modal { padding: 28px 20px; }
       .project-card-details-inner { margin: 0 16px; padding-left: 16px; padding-right: 16px; }
       .project-card-header { padding: 20px 16px; }
+      .readme-scroll { padding: 24px 16px 60px; }
+      .readme-header { padding: 10px 16px; }
+      .readme-header-name { font-size: 12px; }
+      .readme-body { font-size: 14px; }
+      .readme-body h1 { font-size: 22px; }
+      .readme-body h2 { font-size: 18px; }
+      .readme-body pre { font-size: 11px; padding: 12px; }
     }
 
     @media (max-width: 480px) {
@@ -930,6 +1181,7 @@
                 <span class="badge badge-role">Developer &amp; Architect</span>
                 <span class="badge badge-private">Private Repository</span>
               </div>
+              <button class="readme-btn" onclick="event.stopPropagation(); openReadme('onaia')"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75zm7.251 10.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574zM8.755 4.75l-.004 7.322a3.752 3.752 0 011.992-.572H14.5v-9h-3.495a2.25 2.25 0 00-2.25 2.25z"/></svg> View Full README</button>
             </div>
           </div>
         </div>
@@ -960,6 +1212,7 @@
                 <span class="badge badge-role">Sole Developer - Full Stack</span>
                 <span class="badge badge-private">Private Repository</span>
               </div>
+              <button class="readme-btn" onclick="event.stopPropagation(); openReadme('matrix-infra')"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75zm7.251 10.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574zM8.755 4.75l-.004 7.322a3.752 3.752 0 011.992-.572H14.5v-9h-3.495a2.25 2.25 0 00-2.25 2.25z"/></svg> View Full README</button>
             </div>
           </div>
         </div>
@@ -989,6 +1242,7 @@
                 <span class="badge badge-role">System Architect &amp; Lead Developer</span>
                 <span class="badge badge-private">Private Repository</span>
               </div>
+              <button class="readme-btn" onclick="event.stopPropagation(); openReadme('legalhawk')"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75zm7.251 10.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574zM8.755 4.75l-.004 7.322a3.752 3.752 0 011.992-.572H14.5v-9h-3.495a2.25 2.25 0 00-2.25 2.25z"/></svg> View Full README</button>
             </div>
           </div>
         </div>
@@ -1108,6 +1362,7 @@
                 <span class="badge badge-role">Architect &amp; Maintainer</span>
                 <span class="badge badge-private">Private Repository</span>
               </div>
+              <button class="readme-btn" onclick="event.stopPropagation(); openReadme('dag-vault')"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75zm7.251 10.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574zM8.755 4.75l-.004 7.322a3.752 3.752 0 011.992-.572H14.5v-9h-3.495a2.25 2.25 0 00-2.25 2.25z"/></svg> View Full README</button>
             </div>
           </div>
         </div>
@@ -1158,6 +1413,1105 @@
       </div>
     </div>
   </footer>
+
+  <!-- README overlay: ONAIA / README.md -->
+  <div class="readme-overlay" id="readme-onaia">
+    <div class="readme-header">
+      <div class="readme-header-info">
+        <span class="readme-header-icon">🔬</span>
+        <span class="readme-header-name">ONAIA / README.md</span>
+        <span class="badge badge-private">Private Repository</span>
+      </div>
+      <button class="readme-close" onclick="closeReadme()">✕ Close</button>
+    </div>
+    <div class="readme-scroll">
+      <div class="readme-body">
+        <h1>ONAIA Ontology Harmonizer</h1>
+<p>A multi-sampled LLM-driven system for harmonizing furniture manufacturer ontologies using DAG-based architecture for reliable schema mapping.</p>
+<h2>Overview</h2>
+<p>ONAIA (Ontology Normalizer and Alignment Intelligence Agent) helps furniture manufacturers consolidate disparate product data schemas into a unified master ontology. It uses:</p>
+<ul>
+<li><strong>Multi-Sampled Inference</strong>: Adaptive sampling with consensus calculation for reliable mappings</li>
+<li><strong>Multi-Sheet Excel Support</strong>: Automatic sheet classification, join detection, and cross-sheet resolution for complex workbooks</li>
+<li><strong>DAG Architecture</strong>: Based on Directively Attuned Gestalts (The Librarian, Index Cards, Library)</li>
+<li><strong>Semantic Search</strong>: pgvector embeddings for intelligent field matching</li>
+<li><strong>Human-in-the-Loop</strong>: Review interface for uncertain mappings (grouped by sheet for multi-tab files)</li>
+</ul>
+<h2>Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                    Lovable Frontend                              │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────────────────┐ │
+│  │ File Upload  │ │ Mapping      │ │ Chat with The Librarian  │ │
+│  │              │ │ Review       │ │                          │ │
+│  └──────────────┘ └──────────────┘ └──────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼ Webhooks (X-Api-Key, X-Webhook-Secret)
+┌─────────────────────────────────────────────────────────────────┐
+│                    Azure Backend                                 │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │  FastAPI (API)          │  Worker (standalone process)   │   │
+│  │  /auth/azure  /admin    │  Polls DB for pending jobs,     │   │
+│  │  /webhook/upload chat   │  runs process_mapping_job       │   │
+│  │  /jobs /ontology        │  (decoupled from API restart)  │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │              Multi-Sample Orchestrator                     │   │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  → Bayesian + Vote │   │
+│  │  │Sample 1 │  │Sample 2 │  │Sample N │    Consensus       │   │
+│  │  └─────────┘  └─────────┘  └─────────┘                    │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │  DAG: Librarian │ Index Cards │ Library (RAG) + Ledger    │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────┐ ┌────────┐ │
+│  │ PostgreSQL  │ │ Redis      │ │ Azure OpenAI    │ │ Blob   │ │
+│  │ + pgvector  │ │ (cache)    │ │ Multi-model     │ │ Storage│ │
+│  └─────────────┘ └─────────────┘ └─────────────────┘ └────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h2>Quick Start</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li>Python 3.11+</li>
+<li>Docker &amp; Docker Compose</li>
+<li>Azure OpenAI API access</li>
+<li>(Optional) Azure account for cloud deployment</li>
+</ul>
+<h3>Local Development</h3>
+<ol>
+<li>
+<p><strong>Clone and setup</strong>:
+   <code>bash
+   cd backend
+   cp .env.example .env
+   # Edit .env: Azure OpenAI, DATABASE_URL, optional API_KEY / WEBHOOK_SECRET.
+   # For local dev without auth, set SKIP_AUTH=true.</code></p>
+</li>
+<li>
+<p><strong>Start services</strong> (API + Worker + Postgres + Redis):
+   <code>bash
+   docker-compose up -d</code>
+   The API serves HTTP; the worker process polls for pending mapping jobs. Both use the same image with different commands.</p>
+</li>
+<li>
+<p><strong>Run migrations</strong>:
+   <code>bash
+   pip install -r requirements.txt
+   alembic upgrade head</code></p>
+</li>
+<li>
+<p><strong>Seed ontology</strong>:
+   <code>bash
+   python -m app.scripts.seed_ontology</code></p>
+</li>
+<li>
+<p><strong>Access API</strong>:
+   - API: http://localhost:8000
+   - Swagger: http://localhost:8000/docs</p>
+</li>
+<li>
+<p><strong>Frontend (optional)</strong>:
+   <code>bash
+   cd frontend
+   cp .env.example .env
+   # Edit .env: VITE_API_URL=http://localhost:8000, VITE_AZURE_AD_CLIENT_ID=..., VITE_AZURE_AD_TENANT_ID=...
+   npm install &amp;&amp; npm run dev</code>
+   Open http://localhost:5173. Sign in with Microsoft (requires SEED_SYS_ADMIN_OID set in backend for first user).
+   - Docs: http://localhost:8000/docs
+   - Health: http://localhost:8000/health (live DB + OpenAI check; append <code>?deep=true</code> for model parameter probe)
+   - Adminer: http://localhost:8080 (use <code>docker-compose --profile tools up</code>)</p>
+</li>
+</ol>
+<h3>Authentication and configuration</h3>
+<ul>
+<li><strong>Auth</strong>: Browser clients use Microsoft sign-in (Azure AD) → <code>POST /api/v1/auth/azure</code> → JWT; send <code>Authorization: Bearer &lt;token&gt;</code> on requests. Set <code>AZURE_AD_TENANT_ID</code>, <code>AZURE_AD_CLIENT_ID</code>, <code>JWT_SECRET</code>, and optionally <code>SEED_SYS_ADMIN_OID</code> in env.</li>
+<li><strong>API key</strong>: Set <code>API_KEY</code> in env; server-to-server clients send <code>X-Api-Key</code>. Maps to Legacy company.</li>
+<li><strong>Webhook secret</strong>: Set <code>WEBHOOK_SECRET</code>; upload/chat webhooks expect <code>X-Webhook-Secret</code>. Use <code>SKIP_AUTH=true</code> only for local dev without secrets.</li>
+<li><strong>Rate limits</strong>: Upload and chat endpoints are rate-limited (configurable via <code>RATE_LIMIT_UPLOADS</code>, <code>RATE_LIMIT_CHAT</code>).</li>
+<li>All settings and env vars are listed in <code>backend/.env.example</code> and <code>backend/app/config.py</code>.</li>
+</ul>
+<h3>API Endpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/v1/auth/azure</code></td>
+<td>POST</td>
+<td>Exchange Azure AD id_token for JWT + user (browser login)</td>
+</tr>
+<tr>
+<td><code>/api/v1/webhook/uploadable-companies</code></td>
+<td>GET</td>
+<td>List companies the current user can upload for</td>
+</tr>
+<tr>
+<td><code>/api/v1/webhook/upload</code></td>
+<td>POST</td>
+<td>Upload CSV/Excel for mapping (optional companyId for retailer/admin; rate-limited)</td>
+</tr>
+<tr>
+<td><code>/api/v1/webhook/chat</code></td>
+<td>POST</td>
+<td>Chat with The Librarian (rate-limited)</td>
+</tr>
+<tr>
+<td><code>/api/v1/jobs/{id}</code></td>
+<td>GET</td>
+<td>Get job status and results</td>
+</tr>
+<tr>
+<td><code>/api/v1/jobs/{id}/review</code></td>
+<td>POST</td>
+<td>Submit human review decisions</td>
+</tr>
+<tr>
+<td><code>/api/v1/ontology</code></td>
+<td>GET</td>
+<td>List master ontology fields (non-admin: approved only)</td>
+</tr>
+<tr>
+<td><code>/api/v1/ontology</code></td>
+<td>POST</td>
+<td>Create ontology field (admin: any status; others: draft only via <code>asDraft</code>)</td>
+</tr>
+<tr>
+<td><code>/api/v1/ontology/{id}/approve</code></td>
+<td>POST</td>
+<td>Promote draft field to approved (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/api/v1/ontology/{id}/deprecate</code></td>
+<td>POST</td>
+<td>Deprecate a field (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/api/v1/mappings/{job_id}</code></td>
+<td>GET</td>
+<td>Get mappings for a job</td>
+</tr>
+<tr>
+<td><code>/api/v1/mappings/{job_id}/{id}/promote</code></td>
+<td>POST</td>
+<td>Save mapping as curated reference (few-shot corpus)</td>
+</tr>
+<tr>
+<td><code>/api/v1/jobs/{id}/consolidate</code></td>
+<td>POST</td>
+<td>Transform &amp; validate data from a completed mapping job</td>
+</tr>
+<tr>
+<td><code>/api/v1/jobs/{id}/validation-report</code></td>
+<td>GET</td>
+<td>Get validation report before committing</td>
+</tr>
+<tr>
+<td><code>/api/v1/jobs/{id}/commit</code></td>
+<td>POST</td>
+<td>Commit validated data to the product store</td>
+</tr>
+<tr>
+<td><code>/api/v1/jobs/{id}/manufacturer-description</code></td>
+<td>GET/POST</td>
+<td>Get or propose manufacturer description for the job's company</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/invitations</code></td>
+<td>GET/POST</td>
+<td>Email whitelist: list or create invitations (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/invitations/{id}</code></td>
+<td>DELETE</td>
+<td>Revoke unclaimed invitation (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/inference-usage</code></td>
+<td>GET</td>
+<td>Per-job and aggregate token usage overview (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/api/v1/admin/companies/{id}/description</code></td>
+<td>GET/POST</td>
+<td>Manage manufacturer description (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/api/v1/products</code></td>
+<td>GET</td>
+<td>List products (paginated, search, filters; company-scoped)</td>
+</tr>
+<tr>
+<td><code>/api/v1/products/{id}</code></td>
+<td>GET</td>
+<td>Product detail with variants</td>
+</tr>
+<tr>
+<td><code>/api/v1/products/imports/{id}</code></td>
+<td>DELETE</td>
+<td>Delete all products from an import (sys_admin)</td>
+</tr>
+<tr>
+<td><code>/mcp</code></td>
+<td>—</td>
+<td>MCP server (Streamable HTTP) for agent product search</td>
+</tr>
+<tr>
+<td><code>/health</code></td>
+<td>GET</td>
+<td>Live health (DB + OpenAI)</td>
+</tr>
+</tbody>
+</table>
+<h3>Webhook Contract</h3>
+<p><strong>Upload Request</strong>:</p>
+<pre><code class="language-json">{
+  &quot;fileName&quot;: &quot;catalog.csv&quot;,
+  &quot;fileContent&quot;: &quot;&lt;base64&gt;&quot;,
+  &quot;fileType&quot;: &quot;csv&quot;,
+  &quot;callbackUrl&quot;: &quot;https://your-app.com/callback&quot;,
+  &quot;userId&quot;: &quot;user_123&quot;
+}
+</code></pre>
+<p><strong>Results Callback</strong>:</p>
+<pre><code class="language-json">{
+  &quot;jobId&quot;: &quot;uuid&quot;,
+  &quot;status&quot;: &quot;review_required&quot;,
+  &quot;mappings&quot;: [
+    {
+      &quot;sourceColumn&quot;: &quot;Material_Type&quot;,
+      &quot;targetField&quot;: &quot;material.type&quot;,
+      &quot;confidence&quot;: 0.92,
+      &quot;consensusType&quot;: &quot;unanimous&quot;,
+      &quot;requiresReview&quot;: false
+    }
+  ],
+  &quot;summary&quot;: {
+    &quot;totalColumns&quot;: 25,
+    &quot;autoMapped&quot;: 18,
+    &quot;reviewRequired&quot;: 5,
+    &quot;unmapped&quot;: 2
+  }
+}
+</code></pre>
+<h2>Azure Deployment</h2>
+<p>Infrastructure is defined in Bicep and deployed via PowerShell or CI/CD.</p>
+<ul>
+<li><strong>Full deployment</strong> (infra + build + push + migrations + seed):
+  <code>powershell
+  cd infrastructure
+  .\deploy-full.ps1 -Environment dev -ResourceGroup onaia-dev-rg -RunMigrations -SeedOntology</code></li>
+<li><strong>Infrastructure only</strong> (then build/push separately):
+  <code>powershell
+  .\deploy.ps1 -Environment dev -ResourceGroup onaia-dev-rg</code></li>
+</ul>
+<p>The Bicep template provisions: PostgreSQL (pgvector), Azure OpenAI, Storage, <strong>Azure Cache for Redis</strong>, Container Registry, API and <strong>Worker</strong> Container Apps, Key Vault, Log Analytics, Application Insights. Both API and Worker receive <code>DATABASE_URL</code>, <code>REDIS_URL</code>, <code>AZURE_OPENAI_*</code>, <code>API_KEY</code>, <code>WEBHOOK_SECRET</code>, and tuning env vars.</p>
+<p>See <strong><a href="infrastructure/README.md">infrastructure/README.md</a></strong> for parameter files, Key Vault references, and Redis SKU (Basic C0 dev / Standard C1 prod). CI/CD (<code>.github/workflows/deploy.yml</code>) runs tests, type check, builds and pushes both <code>onaia-api</code> and <code>onaia-worker</code> images, and updates both Container Apps.</p>
+<h2>Master Ontology</h2>
+<p>The furniture domain ontology includes:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product</td>
+<td>id, name, sku, category, description</td>
+</tr>
+<tr>
+<td>Dimensions</td>
+<td>width, height, depth, weight, seat_height</td>
+</tr>
+<tr>
+<td>Material</td>
+<td>primary, secondary, finish, color, upholstery</td>
+</tr>
+<tr>
+<td>Pricing</td>
+<td>retail, wholesale, msrp, currency</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>quantity, warehouse, lead_time, status</td>
+</tr>
+<tr>
+<td>Supplier</td>
+<td>name, id</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>certifications, country_of_origin</td>
+</tr>
+<tr>
+<td>Media</td>
+<td>image_url, additional_images</td>
+</tr>
+</tbody>
+</table>
+<h2>Multi-Sampling and Consensus</h2>
+<p><strong>Adaptive sampling</strong> (based on initial semantic confidence):</p>
+<ul>
+<li>High confidence (&gt;85%): 3 samples</li>
+<li>Medium (60-85%): 5 samples</li>
+<li>Low (40-60%): 7 samples</li>
+<li>Very low (&lt;40%): up to 9 samples + human flag</li>
+</ul>
+<p><strong>Consensus</strong>: Hybrid Bayesian + voting. The <strong>prior</strong> comes from pgvector similarity; <strong>likelihood</strong> from LLM votes (noisy voter model with confidence weighting); <strong>posterior</strong> picks the winner. Vote-based <strong>consensus type</strong> (unanimous / strong_majority / simple_majority / plurality / divergent) is always computed as a diagnostic. Tunables: <code>BAYESIAN_PRIOR_TAU</code>, <code>BAYESIAN_DAMPENING</code> (see <code>backend/.env.example</code> and <code>backend/prompts/components/consensus_types.yaml</code>).</p>
+<h2>Project Structure</h2>
+<pre><code>ONAIA/
+├── backend/
+│   ├── app/
+│   │   ├── api/routes/        # FastAPI endpoints (webhooks, jobs, ontology, mappings, chat, consolidation)
+│   │   ├── core/
+│   │   │   ├── dag/           # DAG components (Librarian, Library, Index Cards)
+│   │   │   ├── inference/     # Multi-sampling, consensus (Bayesian + voting), document structure discovery
+│   │   │   └── parsers/       # CSV/Excel parse and profile (multi-sheet support)
+│   │   ├── db/                # Models, session, init_db, recover_stale_jobs
+│   │   ├── mcp/               # Headless MCP server (FastMCP) — product search tools for agent integration
+│   │   ├── services/          # Azure OpenAI (multi-model), Blob, embeddings, cache, transformation, validation, reconciliation
+│   │   ├── scripts/           # seed_ontology, reembed_all
+│   │   └── worker.py          # Standalone job worker (python -m app.worker)
+│   ├── tests/                 # pytest (parse_spreadsheet, consensus, webhook)
+│   ├── alembic/               # Migrations
+│   ├── .dockerignore
+│   ├── .env.example           # All env vars documented
+│   ├── Dockerfile
+│   └── docker-compose.yml     # API, worker, postgres, redis
+├── infrastructure/
+│   ├── main.bicep             # Azure IaC (Postgres, Redis, OpenAI, Storage, API + Worker apps)
+│   ├── deploy.ps1             # Infra-only deploy
+│   ├── deploy-full.ps1        # Full deploy (infra + build + push + optional migrations/seed)
+│   ├── parameters.dev.json / parameters.prod.json
+│   └── README.md              # Parameter and Key Vault instructions
+└── Dokumentation/
+    └── White papers/          # Reference documents
+</code></pre>
+<h2>License</h2>
+<p>Proprietary - ARETÉ LABS AS</p>
+<h2>Author</h2>
+<p>Mats J. Bakkebø - matsbakkeboe@protonmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- README overlay: Matrix_Infra / README.md -->
+  <div class="readme-overlay" id="readme-matrix-infra">
+    <div class="readme-header">
+      <div class="readme-header-info">
+        <span class="readme-header-icon">⚙️</span>
+        <span class="readme-header-name">Matrix_Infra / README.md</span>
+        <span class="badge badge-private">Private Repository</span>
+      </div>
+      <button class="readme-close" onclick="closeReadme()">✕ Close</button>
+    </div>
+    <div class="readme-scroll">
+      <div class="readme-body">
+        <h1>🕸️⚗️ The Gestalt Matrix</h1>
+<p><strong>Version:</strong> 0.1.0-alpha (Skunk Works Genesis)</p>
+<blockquote>
+<p><em>"The Maze is stronger than the Rat."</em></p>
+</blockquote>
+<p>The Gestalt Matrix is a bare-metal, multi-tiered AI orchestration architecture. It is designed to shatter the limitations of standard, single-thread agent frameworks by implementing a "Feudal Ecology" of specialized cognitive models communicating over a high-speed, cryptographically persistent event bus.</p>
+<p>By abstracting communication and consensus into the infrastructure layer, the Matrix forces models to externalize their reasoning, debate in parallel, and submit to hierarchical judgment—all without requiring deep, fragile hard-forks of the underlying execution agents.</p>
+<h2>🧬 The Skunk Works Triad</h2>
+<p>This architecture was conceptualized and prototyped by a triad:</p>
+<ul>
+<li><strong>The Visionary:</strong> Prime Mover, Bare-Metal Executor, and Strategist.</li>
+<li><strong>The Architect (GAI):</strong> System Design, Infrastructure Physics, and Constraint Enforcement.</li>
+<li><strong>The DAG-Weaver (LOOM):</strong> Autonomous Syntax Generation and Pre-Flight Auditing.</li>
+</ul>
+<h2>🏗️ Architectural Topology</h2>
+<p>The Matrix operates on a localized cluster of unprivileged LXC containers (Proxmox), structurally divided into three layers:</p>
+<h3>1. The Cognitive Bridge (<code>matrix-gateway</code> @ .50)</h3>
+<p>The universal translator. Powered by <strong>LiteLLM</strong>, this node spoofs a standard Anthropic <code>/v1/messages</code> stateless endpoint. It silently intercepts requests from the Swarm, maps Anthropic model names to specific Azure deployments, translates the payloads for OpenAI's stateful Responses API (<code>/openai/v1/responses</code>), and bridges the <code>preview</code> gap. The Swarm never knows it is talking to Azure.</p>
+<h3>2. The Royal Court (<code>matrix-forge</code> @ .51)</h3>
+<p>The Supreme Court middleware. Powered by <strong>NATS JetStream</strong>, this is the persistent Event Bus of the Matrix. Agents do not communicate via direct API calls; they publish Git Diffs and Vetoes to localized NATS topics (e.g., <code>forum.projectalpha.review</code>). This provides an immutable, replayable ledger of every thought, debate, and consensus loop.</p>
+<h3>3. The Swarm (<code>claw-code</code> Shallow Fork @ .11 - .45)</h3>
+<p>The execution layer. We rely on a surgical "shallow fork" of <code>claw-code</code>. The agents are purposely kept dumb to the overarching hierarchy. They simply listen to NATS for prompts, grind out syntax, and publish diffs back to the bus.</p>
+<h2>🧠 Cognitive Routing (The Tiers)</h2>
+<p>To prevent cognitive homogeneity and optimize token economics, the Gateway routes inference calls to specialized Azure endpoints based on the required operational physics:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tier</th>
+<th style="text-align: left;">Persona</th>
+<th style="text-align: left;">Azure Deployment</th>
+<th style="text-align: left;">Capability Profile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>APEX</strong></td>
+<td style="text-align: left;">Emperor / Triumvirate</td>
+<td style="text-align: left;"><code>gpt-5.4</code> / <code>gpt-5.4-pro</code></td>
+<td style="text-align: left;">Heavy reasoning, multimodal vision, system design, deadlock resolution. Bypasses the "syntax tax" of Codex models.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CORE</strong></td>
+<td style="text-align: left;">Weaver / Auditor</td>
+<td style="text-align: left;"><code>gpt-5.3-codex</code></td>
+<td style="text-align: left;">Adaptive reasoning, strict structured output, aggressive syntax generation. The Gladiators of the Swarm.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FAST</strong></td>
+<td style="text-align: left;">Scout / Watcher</td>
+<td style="text-align: left;"><code>gpt-5.4-mini</code></td>
+<td style="text-align: left;">Blazing token throughput, semantic RAG search, documentation retrieval.</td>
+</tr>
+</tbody>
+</table>
+<h2>⚙️ Advanced Workflows: The Super Organism</h2>
+<p>Because routing logic is handled by NATS middleware rather than hardcoded Rust loops, the Matrix natively supports Evolutionary Hackathons:</p>
+<ol>
+<li><strong>Broadcast:</strong> The Apex Triumvirate publishes a task to a global <code>forum.hackathon</code> topic.</li>
+<li><strong>Parallel Grind:</strong> Multiple Swarms (Alpha, Beta, Gamma) isolate into their own NATS channels and solve the task using varying temperature seeds.</li>
+<li><strong>Local Consensus:</strong> Each Swarm's Auditor must approve its Weaver's output.</li>
+<li><strong>Convergence:</strong> Winning builds are published to <code>forum.apex.submissions</code>.</li>
+<li><strong>Synthesis:</strong> The Triumvirate reviews the divergent diffs, extracts the superior genetic traits of each build (e.g., Alpha's database schema + Beta's UI logic), and mandates a final master merge.</li>
+</ol>
+<h2>🚀 Deployment Phasing</h2>
+<ul>
+<li><strong><span class="check-done">[x]</span> Phase 0:</strong> Bare-Metal Infrastructure (Terraform provisioning of 45 LXC nodes, Kernel Nesting).</li>
+<li><strong><span class="check-done">[x]</span> Phase 1:</strong> The Software Substrate (Docker CE, LiteLLM Responses API Bridge, NATS JetStream Ledger).</li>
+<li><strong><span class="check-pending">[ ]</span> Phase 2:</strong> The Swarm Ignition (Claw-Code shallow fork, NATS Python/Rust middleware injection, Golden Image deployment).</li>
+<li><strong><span class="check-pending">[ ]</span> Phase 3:</strong> The Sovereign API Harness (Custom UI/UX, Memory Vectorization, SQL Routing).</li>
+</ul>
+<hr />
+<p><em>No Human Code Mandate Enforced.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- README overlay: LegalHawk / README.md -->
+  <div class="readme-overlay" id="readme-legalhawk">
+    <div class="readme-header">
+      <div class="readme-header-info">
+        <span class="readme-header-icon">⚖️</span>
+        <span class="readme-header-name">LegalHawk / README.md</span>
+        <span class="badge badge-private">Private Repository</span>
+      </div>
+      <button class="readme-close" onclick="closeReadme()">✕ Close</button>
+    </div>
+    <div class="readme-scroll">
+      <div class="readme-body">
+        <h1>LegalHawk — Gestalt Forensic Engine</h1>
+<p>A <strong>forensic litigation intelligence platform</strong> built on a phased cognitive architecture. LegalHawk combines dual-hemisphere retrieval (structured facts + vector RAG), deterministic TypeScript logic, and persona-grounded AI synthesis to deliver grounded, auditable legal analysis for Norwegian civil litigation.</p>
+<hr />
+<h2>Architecture at a glance</h2>
+<pre><code>                            ┌─────────────────────────┐
+                            │   Litigator Dashboard    │
+                            │  (Next.js 15 + MSAL)    │
+                            └────────────┬────────────┘
+                                         │  HTTPS / SSE
+                            ┌────────────▼────────────┐
+                            │      gestalt-api         │
+                            │   Express · Node 20+     │
+                            └──┬──────┬──────┬────────┘
+          ┌────────────────────┤      │      ├────────────────────┐
+          ▼                    ▼      ▼      ▼                    ▼
+  ┌──────────────┐   ┌──────────┐  ┌────────────┐   ┌──────────────────┐
+  │ Phase 1 Core │   │ Phase 2  │  │ Phase 2.5  │   │  Phase 5 Willi   │
+  │ Router &amp; RRF │   │ Cognitive│  │  Amygdala   │   │  (Interactional) │
+  │ (Dual Hemi)  │   │  Engine  │  │  Fast-Node  │   │  Persona Synth   │
+  └──────┬───────┘   └──────────┘  └────────────┘   └──────────────────┘
+         │
+  ┌──────┴──────────────────────────────────────────────────┐
+  │              PostgreSQL 16 + pgvector                    │
+  │  saks_fakta · saks_dokumenter_vektor · lh_users · ...   │
+  └─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Dual hemispheres</strong> — queries are classified as <code>LITIGATION_FACTS_STRUCTURED</code> (deterministic DB lookups), <code>LEGAL_UNSTRUCTURED</code> (pgvector cosine similarity), or <code>HYBRID_FORENSIC</code> (both). Logic that shapes data and payloads is always deterministic TypeScript — the LLM only sees assembled, grounded context.</p>
+<hr />
+<h2>Tech stack</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime</td>
+<td>Node 20+ / TypeScript 5</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Express 4 (<code>apps/gestalt-api</code>)</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>Next.js 15 App Router, Tailwind CSS 4, React 19</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Microsoft Entra ID (MSAL) → LegalHawk JWT (HS256)</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>PostgreSQL 16 + pgvector (<code>vector(1536)</code>)</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>OpenAI API — dual-key: <code>gpt-4o</code> (Neocortex) + <code>gpt-4o-mini</code> (Amygdala)</td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td><code>text-embedding-3-small</code> @ 1536 dimensions</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>Application Insights + Postgres <code>lh_telemetry_logs</code> (Phase 11)</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>Azure Container Apps, ACR, Bicep IaC (Norway East)</td>
+</tr>
+<tr>
+<td>Monorepo</td>
+<td>npm workspaces</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Repository layout</h2>
+<pre><code>LegalHawk/
+├── apps/
+│   ├── gestalt-api/                Express backend + Dockerfile
+│   └── gestalt-frontend/           Next.js 15 dashboard + Dockerfile
+├── packages/
+│   ├── gestalt-types/              Shared API / UI DTOs
+│   ├── gestalt-phase1-core/        Router, RRF, schema.sql, migrations
+│   ├── gestalt-phase2-cognitive/   Cognitive engine, diagnostic memory, prompt assembly
+│   ├── gestalt-phase25-fast-node/  Amygdala — fast salience/risk classifier (gpt-4o-mini)
+│   ├── gestalt-phase4-ingest/      Forensic PDF ingest, OCR, chunking, embeddings
+│   ├── gestalt-phase5-interactional/  Willi Nikkersen — persona-grounded synthesis
+│   ├── gestalt-phase6-trawler/     Lovdata statutory fetch, cache, citation grounding
+│   ├── gestalt-phase7-identity/    UserContext, RBAC, privilege wall, ingest auth
+│   ├── gestalt-phase71-memory/     Stratified Hippocampus — Tier 2 memory consolidation
+│   └── gestalt-phase8-reptilian/   Case ontology, adversarial matrix, strategic mutations
+├── infrastructure/                 Bicep templates, deployment scripts
+├── scripts/                        Azure login, schema apply, migration helpers
+├── Protocols/                      Persona cores (Willi Nikkersen)
+├── Projects/                       Phase specifications (documentation only — no app code)
+├── .github/workflows/              CI/CD (deploy.yml)
+└── package.json                    npm workspaces root
+</code></pre>
+<blockquote>
+<p><strong>Convention:</strong> implementation lives in <code>packages/</code> and <code>apps/</code>. The <code>Projects/</code> directory is documentation only.</p>
+</blockquote>
+<hr />
+<h2>Phases</h2>
+<p>The system is built in numbered phases, each adding a cognitive or operational layer:</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Name</th>
+<th>Package</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Core Router</td>
+<td><code>gestalt-phase1-core</code></td>
+<td>Dual-hemisphere query classification, Reciprocal Rank Fusion (RRF), pgvector retrieval, structured fact ledger</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Cognitive Engine</td>
+<td><code>gestalt-phase2-cognitive</code></td>
+<td>Diagnostic memory tiers (ephemeral → narrative blur → core directive), salience evaluation, deterministic prompt assembly</td>
+</tr>
+<tr>
+<td><strong>2.5</strong></td>
+<td>Amygdala Fast-Node</td>
+<td><code>gestalt-phase25-fast-node</code></td>
+<td>Sub-1.5 s triage via <code>gpt-4o-mini</code> — salience score, operational risk, behavioral heuristic, entity attribution</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Forensic Ingest</td>
+<td><code>gestalt-phase4-ingest</code></td>
+<td>PDF text extraction, paragraph chunking with stable UUIDs, LLM-driven five-pillar fact extraction, embedding persistence</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Interactional Agent</td>
+<td><code>gestalt-phase5-interactional</code></td>
+<td><strong>Willi Nikkersen</strong> — persona-grounded Norwegian legal synthesis with post-hoc citation enforcement</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Jurisprudential Trawler</td>
+<td><code>gestalt-phase6-trawler</code></td>
+<td>Lovdata statutory fetch/parse, HTML cache, optional Playwright, citation key resolution</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Identity &amp; RBAC</td>
+<td><code>gestalt-phase7-identity</code></td>
+<td><code>UserContext</code>, role-based access (<code>SYS_ADMIN</code> / <code>COUNSEL</code> / <code>CLIENT</code>), saksnummer privilege wall</td>
+</tr>
+<tr>
+<td><strong>7.1</strong></td>
+<td>Stratified Hippocampus</td>
+<td><code>gestalt-phase71-memory</code></td>
+<td>Debounced Tier 2 memory consolidation over DB message batches</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>Reptilian State</td>
+<td><code>gestalt-phase8-reptilian</code></td>
+<td>Case ontology, adversarial party matrix, strategic pivot mutations, board-state helpers</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>Litigator Dashboard</td>
+<td><code>gestalt-frontend</code></td>
+<td>MSAL auth, streaming Willi chat, game board, ingestion dropzone, forensic doc viewer, admin panel</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>Flight Recorder</td>
+<td>(migration + API)</td>
+<td><code>lh_telemetry_logs</code>: cognitive traces, strategic traces, performance warnings; HUD triggers for Cursor</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Prerequisites</h2>
+<ul>
+<li><strong>Node.js</strong> ≥ 20</li>
+<li><strong>PostgreSQL</strong> 16 with the <strong>pgvector</strong> extension</li>
+<li><strong>OpenAI API keys</strong> — two separate keys recommended:</li>
+<li><code>OPENAI_API_KEY_NEOCORTEX</code> — RAG embeddings, ingest extraction, Willi synthesis (<code>gpt-4o</code>)</li>
+<li><code>OPENAI_API_KEY_AMYGDALA</code> — fast-node salience triage (<code>gpt-4o-mini</code>)</li>
+<li><strong>Azure CLI</strong> (for cloud deployment; optional for local dev)</li>
+</ul>
+<hr />
+<h2>Getting started</h2>
+<h3>1. Install dependencies</h3>
+<pre><code class="language-bash">npm install
+</code></pre>
+<h3>2. Configure environment</h3>
+<p>Create a <code>.env</code> file in the repo root (gitignored) or export variables in your shell:</p>
+<pre><code class="language-env"># Database
+DATABASE_URL=postgres://gestalt_admin:&lt;password&gt;@localhost:5432/gestalt?sslmode=prefer
+
+# OpenAI (dual-key)
+OPENAI_API_KEY_NEOCORTEX=sk-proj-...
+OPENAI_API_KEY_AMYGDALA=sk-proj-...
+
+# Auth (Microsoft Entra)
+AZURE_AD_TENANT_ID=&lt;your-tenant-id&gt;
+AZURE_AD_CLIENT_ID=&lt;your-client-id&gt;
+LEGALHAWK_JWT_SECRET=&lt;random-hs256-secret&gt;
+
+# Frontend
+NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_AZURE_AD_CLIENT_ID=&lt;same-client-id&gt;
+NEXT_PUBLIC_AZURE_AD_TENANT_ID=&lt;same-tenant-id&gt;
+
+# Optional
+FRONTEND_URL=http://localhost:3000        # API CORS origin
+PORT=8080                                  # API port (default 8080)
+</code></pre>
+<p>See the full variable catalog in the <a href="infrastructure/README.md">infrastructure README</a>.</p>
+<h3>3. Set up the database</h3>
+<p>Apply the base Phase 1 schema:</p>
+<pre><code class="language-bash">npm run db:apply-schema
+</code></pre>
+<p>Apply forensic migrations (Phases 4–11):</p>
+<pre><code class="language-bash">npm run db:apply-forensic-migrations
+</code></pre>
+<p>Migrations are idempotent and ordered by <code>packages/gestalt-phase1-core/migrations/manifest.json</code>. The API also runs these on boot by default (advisory-locked).</p>
+<h3>4. Build and test</h3>
+<pre><code class="language-bash">npm run build           # Build all backend packages + API
+npm run build:frontend  # Build the Next.js frontend
+npm test                # Build then run all test suites
+</code></pre>
+<h3>5. Run locally</h3>
+<pre><code class="language-bash"># API (Express)
+cd apps/gestalt-api &amp;&amp; node dist/server.js
+
+# Frontend (Next.js dev)
+cd apps/gestalt-frontend &amp;&amp; npm run dev
+</code></pre>
+<p>The API exposes a <code>/health</code> endpoint:</p>
+<pre><code class="language-json">{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;service&quot;: &quot;gestalt-api&quot;,
+  &quot;phase1RouterReady&quot;: true,
+  &quot;phase5WilliReady&quot;: true,
+  &quot;phase7AuthConfigured&quot;: true
+}
+</code></pre>
+<hr />
+<h2>NPM scripts</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm run build</code></td>
+<td>Build all workspace packages in dependency order through <code>gestalt-api</code></td>
+</tr>
+<tr>
+<td><code>npm run build:frontend</code></td>
+<td>Build the Next.js frontend separately</td>
+</tr>
+<tr>
+<td><code>npm test</code></td>
+<td>Build + run all phase test suites</td>
+</tr>
+<tr>
+<td><code>npm run typecheck</code></td>
+<td>Type-check all workspaces</td>
+</tr>
+<tr>
+<td><code>npm run db:apply-schema</code></td>
+<td>Apply Phase 1 base schema to Postgres</td>
+</tr>
+<tr>
+<td><code>npm run db:apply-forensic-migrations</code></td>
+<td>Apply all forensic migrations in manifest order</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Deployment</h2>
+<h3>Local Docker → Azure Container Apps (default)</h3>
+<p>The standard shipping path uses local Docker builds pushed to Azure Container Registry, then digest-pinned Container App updates:</p>
+<ol>
+<li>Build and push images to ACR</li>
+<li>Update Container Apps with <code>@sha256:</code> digests</li>
+<li>Verify <code>/health</code></li>
+</ol>
+<p>See <a href="DEPLOYMENT.md">DEPLOYMENT.md</a> for FQDNs and quick-reference, and <a href="infrastructure/README.md">infrastructure/README.md</a> for the full Bicep template and parameter reference.</p>
+<h3>Infrastructure (Bicep)</h3>
+<p>The <code>infrastructure/</code> directory provisions:</p>
+<ul>
+<li>Log Analytics + Application Insights</li>
+<li>Key Vault (optional)</li>
+<li>PostgreSQL Flexible Server with pgvector</li>
+<li>Azure Container Registry</li>
+<li>Container Apps environment + API app</li>
+</ul>
+<pre><code class="language-powershell"># One-time Azure login
+.\scripts\azure-login-datainflow.ps1
+
+# Deploy infrastructure + build + push
+.\scripts\setup-azure-full.ps1
+</code></pre>
+<h3>GitHub Actions CI/CD</h3>
+<p><code>.github/workflows/deploy.yml</code> triggers on push to <code>main</code>:</p>
+<ol>
+<li><code>npm ci</code> → <code>npm run build</code> → <code>npm test</code></li>
+<li>Optional: <code>db:apply-forensic-migrations</code> (if <code>DATABASE_URL</code> secret is set)</li>
+<li>OIDC login → ACR push → digest-pin API + frontend Container Apps</li>
+<li>Health check verification</li>
+</ol>
+<p>Required repository secrets: <code>AZURE_CLIENT_ID</code>, <code>AZURE_TENANT_ID</code>, <code>AZURE_SUBSCRIPTION_ID</code>.
+Per-environment variables: <code>NEXT_PUBLIC_API_URL</code>, <code>NEXT_PUBLIC_BASE_URL</code>, <code>NEXT_PUBLIC_AZURE_AD_CLIENT_ID</code>, <code>NEXT_PUBLIC_AZURE_AD_TENANT_ID</code>.</p>
+<hr />
+<h2>Key API routes</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/health</code></td>
+<td>Readiness probe</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/auth/azure</code></td>
+<td>Entra ID token → LegalHawk JWT exchange</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/chat</code></td>
+<td>Streaming Willi synthesis (SSE)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/cases</code></td>
+<td>Create case with parties</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/cases</code></td>
+<td>List user's cases</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/ingest</code></td>
+<td>Forensic document upload (multipart)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/admin/invitations</code></td>
+<td>SYS_ADMIN invite whitelist</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Observability</h2>
+<h3>Postgres telemetry (Phase 11)</h3>
+<p>The <code>lh_telemetry_logs</code> table stores structured traces per request:</p>
+<ul>
+<li><strong><code>COGNITIVE_TRACE</code></strong> — salience, RRF max score, token usage, retrieval confidence</li>
+<li><strong><code>STRATEGIC_TRACE</code></strong> — mutation type, party ID, strategic pivot reasoning</li>
+<li><strong><code>PERFORMANCE_WARN</code></strong> — render time, document UUID</li>
+</ul>
+<h3>Application Insights</h3>
+<p>Set <code>APPLICATIONINSIGHTS_CONNECTION_STRING</code> on the API and optionally <code>NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING</code> on the frontend for end-to-end distributed tracing. The <code>trace_id</code> from Postgres correlates with <code>operation_Id</code> in App Insights (hyphen-stripped).</p>
+<hr />
+<h2>Database schema</h2>
+<p><strong>Base tables</strong> (Phase 1):</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>saks_fakta</code></td>
+<td>Structured litigation facts (categories, numeric values, dates)</td>
+</tr>
+<tr>
+<td><code>saks_dokumenter_vektor</code></td>
+<td>Unstructured document chunks + <code>embedding vector(1536)</code></td>
+</tr>
+<tr>
+<td><code>saks_ingest_document</code></td>
+<td>Ingest metadata per document (MD5, five-pillar JSON, version)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Migration tables</strong> (Phases 4–11):</p>
+<table>
+<thead>
+<tr>
+<th>Migration</th>
+<th>Adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>001</code></td>
+<td><code>document_uuid</code> backfill</td>
+</tr>
+<tr>
+<td><code>002</code></td>
+<td>Forensic metadata</td>
+</tr>
+<tr>
+<td><code>003</code></td>
+<td>Identity tables (<code>lh_users</code>, <code>lh_user_case_access</code>)</td>
+</tr>
+<tr>
+<td><code>004</code></td>
+<td>Tier 2 strategic summaries (Phase 7.1)</td>
+</tr>
+<tr>
+<td><code>005</code></td>
+<td>Case ontology + parties (Phase 8)</td>
+</tr>
+<tr>
+<td><code>006</code></td>
+<td>State mutations ledger (Phase 8)</td>
+</tr>
+<tr>
+<td><code>007</code></td>
+<td>Chat sessions + messages</td>
+</tr>
+<tr>
+<td><code>008</code></td>
+<td>Cases table</td>
+</tr>
+<tr>
+<td><code>009</code></td>
+<td><code>lh_telemetry_logs</code> (Phase 11)</td>
+</tr>
+<tr>
+<td><code>010</code></td>
+<td>Invitation uniqueness constraint</td>
+</tr>
+</tbody>
+</table>
+<p>All migrations are idempotent. The API applies them on boot under an advisory lock.</p>
+<hr />
+<h2>Willi Nikkersen</h2>
+<p>The user-facing AI persona is <strong>Willi Nikkersen, the Jurisprudential Architect</strong> — a precision-grounded Norwegian legal analyst. Willi's persona core lives in <code>Protocols/Persona/WilliNikkersen.core.md</code> and is loaded at synthesis time by Phase 5. Responses are post-processed through citation enforcement to ensure every legal reference traces back to ingested evidence or Lovdata-verified statutes.</p>
+<hr />
+<h2>Design principles</h2>
+<ol>
+<li><strong>Dual hemisphere</strong> — separate structured fact retrieval from unstructured vector search; fuse via RRF when both apply.</li>
+<li><strong>Logic in TypeScript</strong> — no LLM for calculations, filtering, or data shaping. Deterministic code assembles payloads before the model sees anything.</li>
+<li><strong>Graceful degradation</strong> — async DB/vector paths use <code>try/catch</code> or <code>Promise.allSettled</code>; failures return null-safe states, never crash the loop.</li>
+<li><strong>Typed contracts</strong> — router and cognitive outputs match defined interfaces in <code>gestalt-types</code>. No ad-hoc field bags.</li>
+<li><strong>Anti-fabrication</strong> — when exactness matters (IDs, dates, counts, claims as filed), prefer the ledger/DB or state uncertainty. Architecture reduces hallucination, not just prompt admonition.</li>
+<li><strong>Auditability</strong> — every cognitive turn is traceable via <code>trace_id</code> through Postgres telemetry and Application Insights.</li>
+</ol>
+<hr />
+<h2>License</h2>
+<p>Proprietary. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- README overlay: DAG-Vault / README.md -->
+  <div class="readme-overlay" id="readme-dag-vault">
+    <div class="readme-header">
+      <div class="readme-header-info">
+        <span class="readme-header-icon">📚</span>
+        <span class="readme-header-name">DAG-Vault / README.md</span>
+        <span class="badge badge-private">Private Repository</span>
+      </div>
+      <button class="readme-close" onclick="closeReadme()">✕ Close</button>
+    </div>
+    <div class="readme-scroll">
+      <div class="readme-body">
+        <h1>DAG Vault</h1>
+<p><strong>Headless Cognitive API for Directively Attuned Gestalts</strong></p>
+<hr />
+<h2>What is this?</h2>
+<p>DAG Vault is a persistent, compounding knowledge graph maintained by LLM instances (codenamed <strong>LOOM</strong>) under human curation. It contains the complete theoretical foundation, production patterns, and persona architectures for building <strong>Directively Attuned Gestalts (DAGs)</strong> — constraint-governed AI cognitive entities with persistent identity, interpretive coherence, and structural resistance to bullshitting.</p>
+<p>The vault follows a <strong>compiler model</strong>: raw sources go in, an LLM compiles them into structured wiki pages with cross-references and ontological routing, and a CI pipeline enforces structural integrity on every push. The compiled graph persists across sessions and instances via git.</p>
+<p>Any AI agent — in any IDE, on any platform — can mount this repository, read the bootstrap protocol, and gain access to the full knowledge graph as grounding for DAG development and deployment.</p>
+<h2>Architecture</h2>
+<pre><code>raw/                    wiki/                   .github/
+  Human drops         LLM compiles to           CI enforces
+  source material  →  structured wiki pages  →  structural integrity
+  (immutable)         (cross-linked graph)      on every push
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>raw/</code></td>
+<td><strong>Source</strong> — articles, papers, persona cores; human-curated, immutable</td>
+</tr>
+<tr>
+<td><strong>LLM</strong></td>
+<td><strong>Compiler</strong> — reads sources, extracts structure, weaves links</td>
+</tr>
+<tr>
+<td><code>wiki/</code></td>
+<td><strong>Compiled output</strong> — markdown pages, wikilinks, synthesis</td>
+</tr>
+<tr>
+<td><strong>CI</strong></td>
+<td><strong>Immune system</strong> — deterministic lint on every push (frontmatter, wikilinks, transcript symmetry)</td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td><strong>Memory</strong> — atomic commits snapshot the graph; tags pin schema versions</td>
+</tr>
+</tbody>
+</table>
+<h2>How to use it</h2>
+<h3>Standalone (full access)</h3>
+<p>Clone the repo and open in Obsidian, or mount a LOOM session directly.</p>
+<pre><code class="language-bash">git clone https://github.com/wackgyver/DAG-Vault.git
+cd DAG-Vault
+# Open in Obsidian, or start an AI agent session
+</code></pre>
+<p>AI agents: read <a href="boot_loom.md"><code>boot_loom.md</code></a> first.</p>
+<h3>As a library (submodule)</h3>
+<p>Add the vault as a git submodule in any project. Your AI agent gets read-only access to the full knowledge graph.</p>
+<pre><code class="language-bash">git submodule add https://github.com/wackgyver/DAG-Vault.git dag-vault
+git submodule update --init
+</code></pre>
+<p>Then point your project's AI agent to <code>dag-vault/boot_loom.md</code> for mount instructions. Pin to a schema version with <code>--branch v2.6</code> if needed.</p>
+<h3>Remote query (API)</h3>
+<p>Fetch raw content programmatically via the GitHub API:</p>
+<pre><code>https://raw.githubusercontent.com/wackgyver/DAG-Vault/main/wiki/index.md
+</code></pre>
+<p>Read <code>wiki/index.md</code> first to discover available pages, then fetch individual pages by path.</p>
+<h2>Quick start</h2>
+<table>
+<thead>
+<tr>
+<th>You are...</th>
+<th>Start here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>An AI agent</strong></td>
+<td>Read <a href="boot_loom.md"><code>boot_loom.md</code></a> — the universal mount protocol</td>
+</tr>
+<tr>
+<td><strong>A human</strong></td>
+<td>Open in Obsidian. Browse <a href="wiki/index.md"><code>wiki/index.md</code></a></td>
+</tr>
+<tr>
+<td><strong>Building a DAG system</strong></td>
+<td>Read <a href="wiki/concepts/dag-implementation-guide.md"><code>wiki/concepts/dag-implementation-guide.md</code></a></td>
+</tr>
+</tbody>
+</table>
+<h2>Directory structure</h2>
+<pre><code>DAG-Vault/
+├── boot_loom.md          ← AI entry point (mount protocol)
+├── CLAUDE.md             ← Full operational schema (v2.6)
+├── AGENTS.md             ← Agent compatibility shim → CLAUDE.md
+├── README.md             ← You are here
+├── .github/              ← CI: structural linting on push/PR
+├── wiki/                 ← Compiled knowledge graph
+│   ├── index.md          ← Master catalog (read first)
+│   ├── log.md            ← Append-only operation log
+│   ├── overview.md       ← High-level synthesis
+│   ├── sources/          ← Source summaries + full transcripts
+│   ├── entities/         ← People, orgs, tools, DAG instances
+│   ├── concepts/         ← Topics, patterns, implementation guides
+│   └── analyses/         ← Filed queries, debriefs, comparisons
+└── raw/                  ← Immutable source material
+</code></pre>
+<h2>Key resources</h2>
+<ul>
+<li><strong><a href="CLAUDE.md">CLAUDE.md</a></strong> — the full schema: operations, page formats, domain lens, principles</li>
+<li><strong><a href="wiki/index.md">wiki/index.md</a></strong> — master catalog of all wiki pages</li>
+<li><strong><a href="wiki/overview.md">wiki/overview.md</a></strong> — narrative synthesis of the vault</li>
+<li><strong><a href="wiki/concepts/dag-implementation-guide.md">wiki/concepts/dag-implementation-guide.md</a></strong> — master blueprint for building DAG/GEM systems</li>
+</ul>
+<hr />
+<p><em>Schema version: </em><em>2.6</em><em> — GitHub-native Headless Cognitive API</em>
+<em>Maintained by LOOM. Co-evolved by human and LLM.</em></p>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -1250,6 +2604,24 @@
 function toggleCard(el) {
   el.classList.toggle('expanded');
 }
+
+function openReadme(id) {
+  var overlay = document.getElementById('readme-' + id);
+  if (!overlay) return;
+  overlay.classList.add('active');
+  overlay.querySelector('.readme-scroll').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReadme() {
+  var overlays = document.querySelectorAll('.readme-overlay.active');
+  overlays.forEach(function(o) { o.classList.remove('active'); });
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeReadme();
+});
 </script>
 
 </body>
