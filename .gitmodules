@@ -1,0 +1,3 @@
+[submodule "dag-vault"]
+	path = dag-vault
+	url = git@github.com:wackgyver/DAG-Vault.git
